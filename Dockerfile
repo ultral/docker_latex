@@ -6,12 +6,15 @@ LABEL maintainer="Lev Goncharov" \
 MAINTAINER Lev Goncharov <lev@goncharov.xyz>
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends texlive-latex-recommended texlive-fonts-recommended && \
-    apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
+    apt-get install -y texlive-latex-recommended texlive-fonts-recommended && \
+    apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-run mkdir -pv /dir
+RUN apt-get -y install lmodern && \
+    apt-get clean
+
+RUN  mkdir -pv /dir
 
 WORKDIR /dir
 
