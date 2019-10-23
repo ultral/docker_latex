@@ -1,4 +1,5 @@
-on: push
+name: docker_latex
+on: [push]
 
 jobs:
   build:
@@ -11,8 +12,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Tag the image with the git commit hash
-      - run: |
-          docker build . -t ultral/docker_latex:${{ github.sha }}
-          docker push ultral/docker_latex:${{ github.sha }}
-          docker push ultral/docker_latex:latest
+      - name: Build and push image
+        env:
+          DOCKER_IMAGE_ORIGIN: "ultral/docker_latex"
+        run: |
+          docker build . -t ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }}
+          docker push ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }}
+          docker push ${DOCKER_IMAGE_ORIGIN}:latest
