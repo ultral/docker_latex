@@ -5,6 +5,9 @@ LABEL maintainer="Lev Goncharov" \
 
 MAINTAINER Lev Goncharov <lev@goncharov.xyz>
 
+ENV TZ=America/New_York
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
     apt-get install -y texlive-latex-recommended texlive-fonts-recommended && \
     apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
