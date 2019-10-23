@@ -18,4 +18,5 @@ jobs:
         run: |
           docker build . -t ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }}
           docker push ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }}
+          docker build . -t ${DOCKER_IMAGE_ORIGIN}:latest
           docker push ${DOCKER_IMAGE_ORIGIN}:latest
