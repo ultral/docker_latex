@@ -2,7 +2,7 @@
 
 Docker image for building pdf from laTeX
 
-![](https://github.com/actions/hello-world/workflows/.github/workflows/main.yml/badge.svg)
+![](https://github.com/ultral/docker_latex/workflows/.github/workflows/main.yml/badge.svg)
 
 example how to build pdf: 
 
