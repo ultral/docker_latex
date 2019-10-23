@@ -7,6 +7,6 @@ Docker image for building pdf from laTeX
 example how to build pdf: 
 
 ```
-docker run --rm -v /dir -i -v /some/dir/to/latex/files:/dir:Z ultral/docker_latex:latest pdflatex main.tex
+docker run --rm -w /dir -i -v /some/dir/to/latex/files:/dir:Z ultral/docker_latex:latest pdflatex main.tex
 
 ```
