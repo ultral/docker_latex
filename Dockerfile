@@ -14,7 +14,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN apt-get -y install lmodern cm-super && \
+RUN apt-get update && \
+    apt-get -y install lmodern cm-super && \
     apt-get clean
 
 RUN  mkdir -pv /dir
