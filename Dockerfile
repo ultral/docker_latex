@@ -10,11 +10,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y texlive-latex-recommended texlive-fonts-recommended && \
-    apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-lang-all cm-super && \
+    apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN apt-get -y install lmodern && \
+RUN apt-get -y install lmodern cm-super && \
     apt-get clean
 
 RUN  mkdir -pv /dir
