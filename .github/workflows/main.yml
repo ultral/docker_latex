@@ -2,21 +2,21 @@ name: docker_latex
 on: [push]
 
 jobs:
-  build:
+  build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-
-      - uses: azure/container-actions/docker-login@master
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push image
-        env:
-          DOCKER_IMAGE_ORIGIN: "ultral/docker_latex"
-        run: |
-          docker build . -t ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }}
-          docker tag ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }} ${DOCKER_IMAGE_ORIGIN}:latest
-          docker push ${DOCKER_IMAGE_ORIGIN}:${{ github.sha }}
-          docker push ${DOCKER_IMAGE_ORIGIN}:latest
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ultral/docker_latex:latest
