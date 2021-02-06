@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y texlive-latex-recommended texlive-fonts-recommended && \
-    apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
+    apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-lang-all cm-super && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
