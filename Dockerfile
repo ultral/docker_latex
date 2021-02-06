@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:20.04
 LABEL maintainer="Lev Goncharov" \
       description="A docker image based that provides pdflatex" \
       repo="https://github.com/ultral/docker_latex"
